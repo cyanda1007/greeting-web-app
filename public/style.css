@@ -14,7 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url(GettyImages-537436868-58e097d93df78c5162fcf65e.jpg) no-repeat;
+  background: url("../back.jpg");
   background-position: center center;
   background-size: cover;
   color: yellow;
@@ -28,6 +28,19 @@ body {
 input[type="radio"] {
   margin: 1em;
   color: grey;
+}
+.btn-style {
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  font-size: 17px;
+  border-style: none;
+  margin-right: 10px;
+  background-color: #a174a3;
+  color: #ffff;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
 }
 .btn {
   display: flex;
@@ -65,11 +78,14 @@ button {
   flex-direction: column;
   padding: 10px;
 }
-
+.entry {
+  background-color: aqua;
+}
 .count {
   font-size: 4em;
   padding: 0.1em;
   border: 2px solid;
+  margin-bottom: 5px;
   background-color: orchid;
   border-radius: 0.1em;
   margin-left: 10px;

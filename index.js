@@ -34,38 +34,56 @@ app.get("/", function (req, res) {
   });
 });
 app.post("/greeting", function (req, res) {
-  // console.log(req.body);
-  // let nameUser = req.body.name;
-  // let lang = req.body.language;
-
-  // if (nameUser & lang) {
-  //   greet(nameUser, lang);
-  // } else {
-  //   req.flash("info", greeting.errorMessage());
+  let nameUser = req.body.lastName;
+  let lang = req.body.language;
+  let isNumber = /[0-9]/g.test(nameUser);
+  if (nameUser && lang && isNumber == false) {
+    greeting.greet(nameUser, lang);
+    greeting.firstName = req.body.lastName;
+    greeting.language = req.body.language;
+    greeting.userNames(nameUser);
+  } else {
+    req.flash("info", greeting.errorMessage(nameUser, lang));
+  }
+  // if (
+  //   nameUser != undefined &&
+  //   lang != undefined &&
+  //   nameUser != "" &&
+  //   lang != ""
+  // ) {
   // }
-  greeting.firstName = req.body.lastName;
-  greeting.language = req.body.language;
-  greeting.userNames(greeting.firstName);
+  // if (
+  //   nameUser == undefined ||
+  //   lang == undefined ||
+  //   nameUser == "" ||
+  //   lang == ""
+  // ) {
+  //   req.flash("info", greeting.errorMessage(nameUser, lang));
+  // }
 
   res.redirect("/");
 });
 
 app.get("/greeted", function (req, res) {
-  console.log(req.body);
   res.render("greeted", {
     message: greeting.listedName(),
-    // message: greeting.userNames(greeting.firstName),
   });
 });
 
 app.get("/counter/:lastName", function (req, res) {
-  let user = req.params.lastName;
-  // console.log(user);
-  greeting.userCounter(user);
+  let userFname = req.params.lastName;
+
+  greeting.userCounter(userFname);
   res.render("counter", {
-    username: user,
-    numberOfTimes: greeting.userCounter(user),
+    username: userFname,
+    numberOfTimes: greeting.userCounter(userFname),
   });
+});
+
+app.post("/reset", function (req, res) {
+  greeting.clear();
+
+  res.redirect("/");
 });
 
 const PORT = process.env.PORT || 3007;

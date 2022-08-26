@@ -3,6 +3,7 @@ module.exports = function Greetings() {
   var language = "";
   var greetedNames = {};
   var message = "";
+  var error = "";
   function zuluGreeting(names) {
     return "Sawubona " + names;
   }
@@ -32,11 +33,28 @@ module.exports = function Greetings() {
     return message;
   }
 
-  // function errorMessage(name) {
-  //   if (/[0-9]/.test(name)) {
-  //     return "Please put letters only";
-  //   }
-  // }
+  function errorMessage(name, langua) {
+    if (name == "" && langua == null) {
+      error = "Please enter a name and also select one language";
+      return error;
+    }
+    if (name === "") {
+      error = "Please enter a name";
+      return error;
+    }
+    if (/[0-9]/g.test(name)) {
+      error = "Please put letters only";
+      return error;
+    }
+    if (langua !== "") {
+      error = "Please choose one language";
+      return error;
+    }
+  }
+
+  function clear() {
+    greetedNames = {};
+  }
 
   function userNames(name) {
     if (greetedNames[name] == undefined) {
@@ -63,7 +81,7 @@ module.exports = function Greetings() {
     userCounter,
     firstName,
     language,
-    // errorMessage,
+    errorMessage,
     zuluGreeting,
     allNames,
     englishGreeting,
@@ -71,6 +89,7 @@ module.exports = function Greetings() {
     counter,
     greet,
     userNames,
+    clear,
     listedName,
   };
 };
