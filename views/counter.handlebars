@@ -1,6 +1,6 @@
-
-
-Hi
-{{username}}, you have been greeted
-{{numberOfTimes}}
-time(s)
+{{#each name}}
+  Hi
+  {{this.username}}, you have been greeted
+  {{this.counting}}
+  time(s)
+{{/each}}
