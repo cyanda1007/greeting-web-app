@@ -33,6 +33,16 @@ module.exports = function GreetingsDatabase(db) {
     }
   }
 
+  async function numberOfGreetedNames() {
+    try {
+      let count = await db.oneOrNone("select count(*) from users)");
+      console.log(count);
+      return count;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async function greetedName(user) {
     try {
       let result = await db.manyOrNone(
@@ -44,9 +54,19 @@ module.exports = function GreetingsDatabase(db) {
       console.log(err);
     }
   }
+  async function Reset(name) {
+    try {
+      let result = await db.none("delete from users", [name]);
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return {
+    Reset,
     storeNames,
     greetedName,
     displayNames,
+    numberOfGreetedNames,
   };
 };

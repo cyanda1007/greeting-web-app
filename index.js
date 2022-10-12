@@ -35,12 +35,23 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 const greetingsDatabase = GreetingsDatabase(db);
-const greetingRoutes = GreetingRoutes(greetingsDatabase);
+
+const greetingRoutes = GreetingRoutes(greetingsDatabase, Greeting);
+
 app.use(bodyParser.json());
+// app.get("/", function (req, res) {
+//   console.log(Greeting.firstName, Greeting.language);
+//   res.render("index", {
+//     message: Greeting.greet(Greeting.firstName, Greeting.language),
+//     counting: greetingRoutes.greets,
+//   });
+// });
+
 app.post("/greeting", greetingRoutes.routesNames);
 app.get("/", greetingRoutes.greets);
 app.get("/greeted", greetingRoutes.namesDisplayed);
 app.get("/counter/:username", greetingRoutes.currentName);
+app.post("/reset", greetingRoutes.clearDatabase);
 
 const PORT = process.env.PORT || 3007;
 

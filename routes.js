@@ -1,8 +1,13 @@
-module.exports = function greetingRoute(GreetingsDatabase) {
+const greeting = require("./greeting");
+
+module.exports = function greetingRoute(GreetingsDatabase, Greeting) {
   async function routesNames(req, res, next) {
     try {
       let name = req.body.lastName;
+      let language = req.body.language;
       await GreetingsDatabase.storeNames(name);
+      // console.log(Greeting.greet(name, language));
+      req.flash("message", Greeting.greet(name, language));
       res.redirect("/");
     } catch (err) {
       next(err);
@@ -10,7 +15,9 @@ module.exports = function greetingRoute(GreetingsDatabase) {
   }
   async function greets(req, res, next) {
     try {
-      res.render("index");
+      res.render("index", {
+        counting: await GreetingsDatabase.numberOfGreetedNames(),
+      });
     } catch (err) {
       next(err);
     }
@@ -35,11 +42,31 @@ module.exports = function greetingRoute(GreetingsDatabase) {
       next(err);
     }
   }
+
+  async function greetName(req, res, next) {
+    try {
+      res.render("index");
+    } catch (err) {
+      next(err);
+    }
+  }
+  async function clearDatabase(req, res, next) {
+    try {
+      let name = req.body.lastName;
+      res.render("index", {
+        name: await GreetingsDatabase.Reset(name),
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
   return {
+    clearDatabase,
     routesNames,
     greets,
     namesDisplayed,
     currentName,
+    greetName,
   };
 };
 
