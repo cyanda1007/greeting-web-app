@@ -5,9 +5,13 @@ module.exports = function greetingRoute(GreetingsDatabase, Greeting) {
     try {
       let name = req.body.lastName;
       let language = req.body.language;
-      await GreetingsDatabase.storeNames(name);
+      let message = await messageError(name, language);
+      if (message !== undefined) {
+        req.flash("info", message);
+      } else {
+        req.flash("message", Greeting.greet(name, language));
+      }
       // console.log(Greeting.greet(name, language));
-      req.flash("message", Greeting.greet(name, language));
       res.redirect("/");
     } catch (err) {
       next(err);
@@ -60,70 +64,25 @@ module.exports = function greetingRoute(GreetingsDatabase, Greeting) {
       next(err);
     }
   }
+  async function messageError(name, language) {
+    if (!name && !language) {
+      return "please enter a name and select one language";
+    } else if (!name) {
+      return "Please enter a name";
+    } else if (!language) {
+      return "Please select one language";
+    } else {
+      await GreetingsDatabase.storeNames(name);
+    }
+  }
   return {
     clearDatabase,
     routesNames,
     greets,
     namesDisplayed,
     currentName,
+    messageError,
     greetName,
+    clearDatabase,
   };
 };
-
-// const listedName = async (req, res) => {
-
-//   res.render("listedName", {
-//     uniqueName: names,
-//   });
-// };
-
-// const userCounter = async (req, res) => {
-//   let counter = await userNames.namesList();
-//   res.render("userCounter", {
-//     uniqueName: counter,
-//   });
-// };
-
-// const clear = async (req, res) => {
-//   let remove = await userNames.namesList();
-//   res.render("clear", {
-//     uniqueName: remove,
-//   });
-// };
-
-// const greet = async (req, res) => {
-//   let greetings = await userNames.namesList();
-//   res.render("greet", {
-//     uniqueName: greetings,
-//   });
-// };
-
-// const userNames = async (req, res) => {
-//   let nameUser = await userCounter.namesList();
-//   res.render("userNames", {
-//     uniqueName: nameUser,
-//   });
-// };
-
-// const errorMessage = async (req, res) => {
-//   let errMessage = await userNames.namesList();
-//   res.render("errorMessage", {
-//     uniqueName: errMessage,
-//   });
-// };
-
-// const counter = async (req, res) => {
-//   let counting = await userCounter.namesList();
-//   res.render("counter", {
-//     uniqueName: counting,
-//   });
-// };
-// return {
-//   counter,
-//   errorMessage,
-//   userNames,
-//   greet,
-//   clear,
-//   userCounter,
-//   listedName,
-// };

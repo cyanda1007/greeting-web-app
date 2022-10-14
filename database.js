@@ -35,9 +35,9 @@ module.exports = function GreetingsDatabase(db) {
 
   async function numberOfGreetedNames() {
     try {
-      let count = await db.oneOrNone("select count(*) from users)");
+      let count = await db.oneOrNone("select count(*) from users");
       console.log(count);
-      return count;
+      return count.count;
     } catch (err) {
       console.log(err);
     }
