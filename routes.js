@@ -71,6 +71,8 @@ module.exports = function greetingRoute(GreetingsDatabase, Greeting) {
       return "Please enter a name";
     } else if (!language) {
       return "Please select one language";
+    } else if (/[0-9]/g.test(name)) {
+      return "Please enter letters not numbers";
     } else {
       await GreetingsDatabase.storeNames(name);
     }
