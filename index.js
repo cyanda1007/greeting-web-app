@@ -9,11 +9,20 @@ const GreetingRoutes = require("./routes");
 const initOptions = {
   /* initialization options */
 };
-const connection =
+const connectionString =
   process.env.DATABASE_URL ||
   "postgresql://postgres:Cyanda@100%@localhost:5432/my_greetings";
+const config = {
+  connectionString: DATABASE_URL,
+};
+
+if (process.env.NODE_ENV == "production") {
+  config.ssl = {
+    rejectUnauthorized: false,
+  };
+}
 const pgp = require("pg-promise")(initOptions);
-const db = pgp(connection);
+const db = pgp(connectionString);
 // console.log(db);
 const app = express();
 app.use(
