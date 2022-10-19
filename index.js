@@ -13,7 +13,7 @@ const connectionString =
   process.env.DATABASE_URL ||
   "postgresql://postgres:Cyanda@100%@localhost:5432/my_greetings";
 const config = {
-  connectionString: DATABASE_URL,
+  connectionString: connectionString,
 };
 
 if (process.env.NODE_ENV == "production") {
