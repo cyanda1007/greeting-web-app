@@ -51,16 +51,3 @@ const PORT = process.env.PORT || 3007;
 app.listen(PORT, function () {
   console.log("App started");
 });
-
-// app.get("/", routes.greet);
-// app.get("/", routes.counter);
-
-// app.post("/greeting", routes.greet);
-// app.post("/greeting", routes.userNames);
-// app.post("/greeting", routes.errorMessage);
-
-// app.get("/greeted", routes.listedName);
-
-// app.get("/counter/:lastName", routes.userCounter);
-
-// app.post("/reset", routes.clear);
