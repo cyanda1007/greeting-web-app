@@ -1,9 +1,8 @@
--- create database my_greetings;
--- \c my_greetings;
+
 
 create table users(
-    users_id serial primary key,
+    users_id serial primary key not null,
     username text unique not null,
-    counting int
+    counting int not null
 );
 
