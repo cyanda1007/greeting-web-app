@@ -6,9 +6,7 @@ const session = require("express-session");
 const Greeting = require("./greeting")();
 const GreetingsDatabase = require("./database");
 const GreetingRoutes = require("./routes");
-const initOptions = {
-  /* initialization options */
-};
+
 const connectionString =
   process.env.DATABASE_URL ||
   "postgresql://postgres:Cyanda@100%@localhost:5432/my_greetings";
@@ -21,7 +19,7 @@ if (process.env.NODE_ENV == "production") {
     rejectUnauthorized: false,
   };
 }
-const pgp = require("pg-promise")(initOptions);
+const pgp = require("pg-promise")({});
 const db = pgp(connectionString);
 // console.log(db);
 const app = express();
