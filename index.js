@@ -7,29 +7,12 @@ const Greeting = require("./greeting")();
 const GreetingsDatabase = require("./database");
 const GreetingRoutes = require("./routes");
 
-const connectionString =
-  process.env.DATABASE_URL ||
-  "postgresql://postgres:Cyanda@100%@localhost:5432/my_greetings";
-const config = {
-  connectionString: connectionString,
-};
-
+const DATABASE_URL =
+  process.env.DATABASE_URL || "postgresql://localhost:5432/my_greetings";
+const config = { connectionString: DATABASE_URL };
 if (process.env.NODE_ENV == "production") {
-  config.ssl = {
-    rejectUnauthorized: false,
-  };
+  config.ssl = { rejectUnauthorized: false };
 }
-const pgp = require("pg-promise")({});
-const db = pgp(connectionString);
-// console.log(db);
-const app = express();
-app.use(
-  session({
-    secret: "index",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
 
 // initialise the flash middleware
 app.use(flash());
