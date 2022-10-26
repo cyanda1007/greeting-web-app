@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == "production") {
 }
 
 const pgp = require("pg-promise")({});
-const db = pgp(connectionString);
+const db = pgp(DATABASE_URL);
 // console.log(db);
 const app = express();
 app.use(
