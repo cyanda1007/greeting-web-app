@@ -8,14 +8,19 @@ const GreetingsDatabase = require("./database");
 const GreetingRoutes = require("./routes");
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgresql://localhost:5432/my_greetings";
-const config = { connectionString: DATABASE_URL };
+  process.env.DATABASE_URL || "postgrsql://localhost:5432/my_greetings";
+
+const config = {
+  connectionString: DATABASE_URL,
+};
+
 if (process.env.NODE_ENV == "production") {
-  config.ssl = { rejectUnauthorized: false };
+  config.ssl = {
+    rejectUnauthorized: false,
+  };
 }
 
-const pgp = require("pg-promise")({});
-const db = pgp(DATABASE_URL);
+const db = pgp(config);
 // console.log(db);
 const app = express();
 app.use(
