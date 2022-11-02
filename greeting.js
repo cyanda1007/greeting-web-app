@@ -52,31 +52,6 @@ module.exports = function Greetings() {
     }
   }
 
-  function clear() {
-    greetedNames = {};
-  }
-
-  function userNames(name) {
-    if (greetedNames[name] == undefined) {
-      greetedNames[name] = 1;
-    } else {
-      greetedNames[name]++;
-    }
-  }
-  function listedName() {
-    let namesList = Object.keys(greetedNames);
-    return namesList;
-  }
-
-  function allNames() {
-    return greetedNames;
-  }
-
-  function userCounter(name) {
-    console.log(greetedNames[name]);
-    return greetedNames[name];
-  }
-
   return {
     userCounter,
     firstName,
