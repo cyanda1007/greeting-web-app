@@ -6,7 +6,7 @@ const session = require("express-session");
 const Greeting = require("./greeting")();
 const GreetingsDatabase = require("./database");
 const GreetingRoutes = require("./routes");
-
+const pgp = require("pg-promise")();
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgrsql://localhost:5432/my_greetings";
 
