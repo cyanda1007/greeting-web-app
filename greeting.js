@@ -1,9 +1,6 @@
 module.exports = function Greetings() {
-  var firstName = "";
-  var language = "";
-  var greetedNames = {};
   var message = "";
-  var error = "";
+
   function zuluGreeting(names) {
     return "Sawubona " + names;
   }
@@ -14,12 +11,6 @@ module.exports = function Greetings() {
 
   function xhosaGreeting(names) {
     return "Molo " + names;
-  }
-
-  function counter() {
-    let namesList = Object.keys(greetedNames);
-    console.log(namesList);
-    return namesList.length;
   }
 
   function greet(name, langua) {
@@ -33,38 +24,10 @@ module.exports = function Greetings() {
     return message;
   }
 
-  function errorMessage(name, langua) {
-    if (name == "" && langua == null) {
-      error = "Please enter a name and also select one language";
-      return error;
-    }
-    if (name === "") {
-      error = "Please enter a name";
-      return error;
-    }
-    if (/[0-9]/g.test(name)) {
-      error = "Please put letters only";
-      return error;
-    }
-    if (langua !== "") {
-      error = "Please choose one language";
-      return error;
-    }
-  }
-
   return {
-    userCounter,
-    firstName,
-    language,
-    errorMessage,
     zuluGreeting,
-    allNames,
     englishGreeting,
     xhosaGreeting,
-    counter,
     greet,
-    userNames,
-    clear,
-    listedName,
   };
 };

@@ -21,7 +21,7 @@ if (process.env.NODE_ENV == "production") {
 }
 
 const db = pgp(config);
-// console.log(db);
+console.log(db);
 const app = express();
 app.use(
   session({
