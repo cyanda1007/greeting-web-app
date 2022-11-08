@@ -8,7 +8,8 @@ const GreetingsDatabase = require("./database");
 const GreetingRoutes = require("./routes");
 const pgp = require("pg-promise")();
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgrsql://localhost:5432/my_greetings";
+  process.env.DATABASE_URL ||
+  "postgrsql://postgres:Cyanda@100%@localhost:5432/my_greetings";
 
 const config = {
   connectionString: DATABASE_URL,
@@ -21,7 +22,7 @@ if (process.env.NODE_ENV == "production") {
 }
 
 const db = pgp(config);
-console.log(db);
+// console.log(db);
 const app = express();
 app.use(
   session({
@@ -32,11 +33,10 @@ app.use(
 );
 
 // initialise the flash middleware
+app.use(express.static("public"));
 app.use(flash());
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-app.use(express.static("public"));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

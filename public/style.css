@@ -14,10 +14,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url("../back.jpg");
   background-position: center center;
   background-size: cover;
-  color: yellow;
+  color: blue;
 }
 .filter {
   color: yellow;
@@ -52,10 +51,20 @@ input[type="radio"] {
   display: flex;
   flex-direction: row;
 }
-
+.counter-style {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: blue;
+}
 button {
   color: darkslategrey;
 }
+/* body {
+  background-color: red;
+} */
 
 /* .name-error {
   color: red;
