@@ -33,8 +33,8 @@ app.use(
 );
 
 // initialise the flash middleware
-app.use(express.static("public"));
 app.use(flash());
+app.use(express.static("public"));
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
