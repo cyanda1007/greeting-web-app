@@ -1,0 +1,18 @@
+<div class="counter-style">
+  <h1
+    style="color: blue; text-align: center;
+"
+  >Number of time the user has been Greeeted
+  </h1>
+  {{#each name}}
+    <li
+      style="text-align: center;
+"
+    >
+      Hi
+      {{this.username}}, you have been greeted
+      {{this.counting}}
+      time(s)
+    </li>
+  {{/each}}
+</div>

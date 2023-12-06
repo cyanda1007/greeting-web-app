@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+/* .entry {
+  width: 500px;
+  height: 50px;
+  color: red;
+  background-color: blue; */
+/* } */
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-position: center center;
+  background-size: cover;
+  color: blue;
+}
+.filter {
+  color: yellow;
+}
+.display input {
+  padding: 10px;
+}
+input[type="radio"] {
+  margin: 1em;
+  color: grey;
+}
+.btn-style {
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  font-size: 17px;
+  border-style: none;
+  margin-right: 10px;
+  background-color: #a174a3;
+  color: #ffff;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display {
+  display: flex;
+  flex-direction: row;
+}
+.counter-style {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: blue;
+}
+button {
+  color: darkslategrey;
+}
+/* body {
+  background-color: red;
+} */
+
+/* .name-error {
+  color: red;
+  margin-bottom: 7px;
+  display: none;
+}
+.language-error {
+  color: red;
+  margin-top: 13px;
+  display: none; */
+/* }
+.duplicate {
+  color: red;
+  margin-top: 13px;
+  display: none;
+} */
+
+.div2 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.entry {
+  background-color: aqua;
+}
+.count {
+  font-size: 4em;
+  padding: 0.1em;
+  border: 2px solid;
+  margin-bottom: 5px;
+  background-color: orchid;
+  border-radius: 0.1em;
+  margin-left: 10px;
+}
+
+h1 {
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  color: yellowgreen;
+}
+@media only screen and (max-width: 7600px) {
+  .container {
+    flex-direction: column;
+  }
+  input[type="radio"] {
+    margin: 1em;
+    color: grey;
+  }
+}

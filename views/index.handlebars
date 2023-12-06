@@ -1,0 +1,83 @@
+ 
+ <div class="users">
+      <h1>Greeting App</h1>
+
+      <div class="message"></div>
+
+      <form action="/greeting" method="post">
+      {{#if messages.info}}
+<div class="entry">
+    <h3> {{messages.info}}</h3>
+</div>
+{{/if}}
+        <div class="display">
+          <div class="div2">
+           
+            
+
+            <input
+              type="text"
+              class="languageEntered"
+              placeholder="enter a name"
+              name="lastName"
+              value=""
+              
+            />
+          </div>
+
+          <div class="count">{{counting}}</div>
+        </div>
+          <strong>Filter by language</strong>
+        <input
+          type="radio"
+          name="language"
+          class="radioZulu"
+          value="zulu"
+        />Isizulu
+        <input
+          type="radio"
+          name="language"
+          class="radioEnglish"
+          value="engfa"
+        />English
+        <input type="radio" name="language" class="radioXhosa" value="xhosa" />
+        Isixhosa
+        <div class="filter">
+          {{!-- <label for="language" class="language-error"
+            >Please select one language</label --}}
+          {{!-- > --}}
+        </div>
+        <div class="btn">
+          <button
+           class="addLanguage btn-style"
+           type="submit"
+           name="button"
+           >Greet</button>
+
+          {{!-- <div class="remove btn-style"
+          name="reset"
+          >
+          <span>
+
+          Reset
+          </span>
+          </div> --}}
+          <hr />  
+           <a href="/greeted">Greeeted users Names</a>
+          
+        </div>
+      </form>
+<form action="/reset" Method="POST">
+ <button
+           class="remove btn-style"
+           type="submit"
+           name="button"
+           >Reset</button>
+
+</form>
+      
+
+      <div class="typeOfLanguage">{{ messages.message}} </div>
+    </div>
+  </div>  
+    

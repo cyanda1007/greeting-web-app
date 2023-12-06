@@ -1,0 +1,9 @@
+<div class="users">
+  <h1>Greeeted Names</h1>
+  {{#each greetedNames}}
+    <ul>
+      {{!-- <li>{{this}}</li> --}}
+      <a href="/counter/{{this.username}}"> <li>{{this.username}}</li></a>
+    </ul>
+  {{/each}}
+</div>
